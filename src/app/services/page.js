@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import ServiceList from "./ServiceList";
 import ServiceDetail from "./ServiceDetail";
@@ -16,7 +17,8 @@ const services = [
   {
     id: 2,
     title: "Sales & Marketing",
-    description: "Drive revenue growth with our expert sales and marketing teams.",
+    description:
+      "Drive revenue growth with our expert sales and marketing teams.",
     image: "https://source.unsplash.com/800x600/?marketing,team",
   },
   {
@@ -33,17 +35,23 @@ const services = [
   },
 ];
 
-export default function Page() {
+function ServicePageContent() {
   const params = useSearchParams();
   const id = params.get("id");
   const service = services.find((s) => s.id === parseInt(id));
 
+  return id && service ? <ServiceDetail service={service} /> : <ServiceList />;
+}
+
+export default function Page() {
   return (
     <>
       <NovotionNavbar />
-      {id && service ? <ServiceDetail service={service} /> : <ServiceList />}
-
-      <NovotionFooter/>
+      {/* Wrap with Suspense to prevent CSR bailout error */}
+      <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+        <ServicePageContent />
+      </Suspense>
+      <NovotionFooter />
     </>
   );
 }

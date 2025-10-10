@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import BlogList from "./BlogList";
 import BlogDetail from "./BlogDetail";
 import NovotionNavbar from "@/components/Navbar";
@@ -84,27 +84,33 @@ const blogs = [
 
 const categories = ["All", "Interview Tips", "Resume", "Application", "LinkedIn", "Networking"];
 
-export default function Page() {
+function BlogPageContent() {
   const params = useSearchParams();
   const id = params.get("id");
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const blog = blogs.find((b) => b.id === parseInt(id));
 
+  return id && blog ? (
+    <BlogDetail blog={blog} />
+  ) : (
+    <BlogList
+      blogs={blogs}
+      categories={categories}
+      selectedCategory={selectedCategory}
+      onCategoryChange={setSelectedCategory}
+    />
+  );
+}
+
+export default function Page() {
   return (
     <>
       <NovotionNavbar />
-      {id && blog ? (
-        <BlogDetail blog={blog} />
-      ) : (
-        <BlogList 
-          blogs={blogs} 
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-        />
-      )}
-
-      <NovotionFooter/>
+      <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+        <BlogPageContent />
+      </Suspense>
+      <NovotionFooter />
     </>
   );
 }
