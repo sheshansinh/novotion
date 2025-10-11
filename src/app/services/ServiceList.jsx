@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import { getServices } from "@/lib/servicesApi"; // Import the API function
 
 export const BRAND_COLORS = {
   dark: {
@@ -23,61 +24,31 @@ export const BRAND_COLORS = {
   }
 }
 
-const services = [
-  {
-    id: 1,
-    title: "Customer Support",
-    description: "24/7 multilingual support to boost customer satisfaction and build lasting relationships.",
-    image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?q=80&w=2940&auto=format&fit=crop",
-    icon: "💬",
-    features: ["24/7 Availability", "Multilingual Support", "CRM Integration"]
-  },
-  {
-    id: 2,
-    title: "Sales & Marketing",
-    description: "Drive revenue growth with our expert sales and marketing teams and proven strategies.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2940&auto=format&fit=crop",
-    icon: "📈",
-    features: ["Lead Generation", "Market Research", "Campaign Management"]
-  },
-  {
-    id: 3,
-    title: "Data Management",
-    description: "Accurate and scalable data handling solutions for your business intelligence needs.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
-    icon: "📊",
-    features: ["Data Entry", "Data Processing", "Quality Assurance"]
-  },
-  {
-    id: 4,
-    title: "Technical Support",
-    description: "24/7 IT & software assistance to keep your systems running smoothly and efficiently.",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=2940&auto=format&fit=crop",
-    icon: "🔧",
-    features: ["IT Helpdesk", "Software Support", "Technical Troubleshooting"]
-  },
-  {
-    id: 5,
-    title: "Back Office Support",
-    description: "Comprehensive administrative support to streamline your business operations.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2940&auto=format&fit=crop",
-    icon: "📋",
-    features: ["Administrative Tasks", "Document Processing", "Workflow Management"]
-  },
-  {
-    id: 6,
-    title: "E-commerce Support",
-    description: "End-to-end e-commerce solutions to enhance your online customer experience.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2940&auto=format&fit=crop",
-    icon: "🛒",
-    features: ["Order Processing", "Customer Service", "Inventory Management"]
-  }
-];
-
 export default function ServiceList() {
   const router = useRouter();
   const [isVisible, setIsVisible] = useState({});
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
   const sectionRefs = useRef({});
+
+  // Fetch services from API
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        setLoading(true);
+        const servicesData = await getServices();
+        setServices(servicesData);
+      } catch (error) {
+        console.error('Error loading services:', error);
+        // You can set a fallback empty array or show error message
+        setServices([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchServices();
+  }, []);
 
   useEffect(() => {
     const observers = {};
@@ -99,15 +70,39 @@ export default function ServiceList() {
     return () => {
       Object.values(observers).forEach(observer => observer.disconnect());
     };
-  }, []);
+  }, [services]); // Re-run when services change
 
   const setRef = (key) => (el) => {
     sectionRefs.current[key] = el;
   };
 
+  // Loading state
+  if (loading) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading services...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Empty state
+  if (!loading && services.length === 0) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">No Services Available</h2>
+          <p className="text-gray-600">Check back later for our service offerings.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white overflow-x-hidden">
-      {/* Hero Section - SAME STYLE AS ABOUT & BLOG PAGES */}
+      {/* Hero Section */}
       <section 
         ref={setRef('hero')}
         className={`relative flex items-center justify-center overflow-hidden ${BRAND_COLORS.dark.bg}`}
@@ -135,7 +130,7 @@ export default function ServiceList() {
         </div>
       </section>
 
-      {/* Services Grid Section - Light Theme */}
+      {/* Services Grid Section */}
       <section ref={setRef('services')} className="py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center mb-16 sm:mb-20 transform transition-all duration-1000 ${isVisible.services ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -164,13 +159,16 @@ export default function ServiceList() {
                 >
                   <div className="relative overflow-hidden">
                     <img
-                      src={service.image}
+                      src={service.image || "/images/placeholder.jpg"}
                       alt={service.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        e.target.src = "/images/placeholder.jpg";
+                      }}
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-2 rounded-full text-lg font-medium shadow-lg">
-                        {service.icon}
+                        {service.icon || "📝"}
                       </span>
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -185,7 +183,7 @@ export default function ServiceList() {
                     </p>
                     
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {service.features.map((feature, idx) => (
+                      {(service.features || []).slice(0, 3).map((feature, idx) => (
                         <span 
                           key={idx}
                           className="bg-blue-50 text-blue-800 px-3 py-1 rounded-full text-xs font-medium border border-blue-100"
@@ -210,7 +208,7 @@ export default function ServiceList() {
       </section>
 
       {/* Why Choose Us Section - Dark Theme */}
-      <section ref={setRef('whyUs')} className={`py-16 sm:py-20 lg:py-24 ${BRAND_COLORS.dark.bg}`}>
+     <section ref={setRef('whyUs')} className={`py-16 sm:py-20 lg:py-24 ${BRAND_COLORS.dark.bg}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className={`transform transition-all duration-1000 delay-200 ${isVisible.whyUs ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import "./BlogDetail.css";
 
 export default function BlogDetail({ blog }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,7 +20,9 @@ export default function BlogDetail({ blog }) {
           animate={{ opacity: 1, scale: 1 }}
           className="text-center"
         >
-          <h1 className="text-4xl font-bold text-white mb-4">Blog not found 😢</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Blog not found 😢
+          </h1>
           <Link
             href="/blog"
             className="text-blue-300 hover:text-white transition-colors"
@@ -29,6 +32,18 @@ export default function BlogDetail({ blog }) {
         </motion.div>
       </main>
     );
+  }
+
+  // Define the base URL for your server.
+  // 'your_project_folder' is the correct name of your project's root directory.
+  const serverBaseUrl = "http://localhost/custom-sites/novotion-backend/";
+
+  // Construct the full URL for the main image, correctly handling the `../`
+  let imageUrl = "";
+  if (blog.image) {
+    // Remove the "../" from the path and append it to the base URL
+    const cleanImagePath = blog.image.replace("../", "");
+    imageUrl = `${serverBaseUrl}${cleanImagePath}`;
   }
 
   return (
@@ -44,10 +59,7 @@ export default function BlogDetail({ blog }) {
             href="/blog"
             className="inline-flex items-center gap-2 text-blue-300 hover:text-white transition-colors group"
           >
-            <motion.span
-              whileHover={{ x: -5 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.span whileHover={{ x: -5 }} transition={{ duration: 0.2 }}>
               ←
             </motion.span>
             Back to Blogs
@@ -61,11 +73,14 @@ export default function BlogDetail({ blog }) {
           transition={{ duration: 0.7 }}
           className="mb-10 rounded-3xl overflow-hidden shadow-2xl"
         >
-          <img
-            src={blog.image}
-            alt={blog.title}
-            className="w-full h-96 object-cover"
-          />
+          {/* The image src now uses the full URL */}
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt={blog.title}
+              className="w-full h-96 object-cover"
+            />
+          )}
         </motion.div>
 
         {/* Article Header */}
@@ -79,7 +94,7 @@ export default function BlogDetail({ blog }) {
             <span className="bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium">
               {blog.category}
             </span>
-            {blog.featured && (
+            {blog.featured == 1 && (
               <span className="bg-green-500/20 text-green-300 px-4 py-2 rounded-full text-sm font-medium">
                 Featured
               </span>
@@ -106,44 +121,8 @@ export default function BlogDetail({ blog }) {
           transition={{ delay: 0.4 }}
           className="prose prose-lg prose-invert max-w-none"
         >
-          <div className="text-lg leading-relaxed text-blue-100 whitespace-pre-line">
-            {blog.content.split('\n').map((paragraph, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.6 + index * 0.1 }}
-                className="mb-6"
-              >
-                {paragraph}
-              </motion.p>
-            ))}
-          </div>
+          <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
         </motion.article>
-
-        {/* Tags */}
-        {blog.tags && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="mt-12 pt-8 border-t border-white/10"
-          >
-            <div className="flex flex-wrap gap-2">
-              {blog.tags.map((tag, index) => (
-                <motion.span
-                  key={tag}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.9 + index * 0.1 }}
-                  className="bg-white/10 text-blue-200 px-3 py-1 rounded-full text-sm"
-                >
-                  #{tag}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-        )}
 
         {/* Call to Action */}
         <motion.div
