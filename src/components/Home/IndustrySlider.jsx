@@ -3,81 +3,47 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
+// REPLACED WITH YOUR REAL DATA
 const industries = [
   {
-    title: "Technology & Information Technology",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    description: "Software Engineers, DevOps Specialists, QA Analysts, Full Stack Developers, Network Engineers, DFT Verification Engineers, Data Scientists, Cybersecurity Professionals"
+    title: "Technology & IT",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop", // Reusing IT image
+    description: "DevOps, Full Stack, QA, Network Engineering, DFT Verification"
   },
   {
-    title: "Logistics & Supply Chain Management",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop",
-    description: "Warehouse Operations Managers, Logistics Coordinators, Supply Chain Analysts, Distribution Specialists, Transportation Managers, Inventory Control Specialists"
+    title: "Logistics & Supply Chain",
+    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop", // Reusing Logistics image
+    description: "Warehouse Operations, Logistics Coordination, Network Administration"
   },
   {
-    title: "Healthcare & Life Sciences",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
-    description: "Medical Professionals, Healthcare Administrators, Clinical Research Coordinators, Pharmaceutical Sales Representatives, Medical Billing Specialists, Healthcare IT Professionals"
+    title: "Healthcare & Pharmaceuticals",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba99932?w=800&h=600&fit=crop", // Specific image for healthcare
+    description: "Medical Data Entry, Healthcare Customer Support, Compliance Documentation"
   },
   {
-    title: "Finance & Banking Services",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    description: "Financial Analysts, Investment Advisors, Compliance Officers, Banking Operations Specialists, Risk Management Professionals, Accounting Specialists"
+    title: "Finance & Banking",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", // Reusing Financial Services image
+    description: "Data Processing, Compliance Monitoring, Customer Service"
   },
   {
-    title: "Human Resources & Talent Acquisition",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop",
-    description: "HR Business Partners, Recruitment Specialists, Employee Relations Managers, Compensation & Benefits Analysts, HRIS Administrators, Training Coordinators"
+    title: "Human Resources & Recruitment",
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop", // Reusing HR image
+    description: "HR Operations, Talent Acquisition, Employee Administration"
   },
   {
-    title: "Oil, Gas & Energy",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop",
-    description: "Operations Engineers, Technical Support Specialists, Field Service Engineers, Energy Analysts, Safety Compliance Officers, Project Managers"
+    title: "Oil & Gas",
+    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop", // Reusing Oil & Gas image
+    description: "Operations Support, Technical Roles, Administrative Services"
   },
   {
-    title: "Customer Support & Service Centers",
-    image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=600&fit=crop",
-    description: "Customer Success Managers, Technical Support Representatives, Call Center Supervisors, Service Quality Analysts, Client Relations Specialists"
+    title: "Customer Support & Call Centers",
+    image: "https://images.unsplash.com/photo-1520607162513-772a1c4b4d66?w=800&h=600&fit=crop", // Specific image for customer support
+    description: "Inbound/Outbound Services, Technical Support, Customer Success"
   },
   {
     title: "Manufacturing & Engineering",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
-    description: "Quality Engineers, Production Managers, Process Engineers, Operations Supervisors, Manufacturing Technicians, Industrial Engineers"
-  },
-  {
-    title: "Telecommunications",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    description: "Network Engineers, Telecom Sales Professionals, Technical Support Specialists, Systems Administrators, Wireless Technicians"
-  },
-  {
-    title: "Retail & E-Commerce",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-    description: "Store Managers, E-Commerce Specialists, Merchandising Professionals, Inventory Managers, Customer Experience Specialists"
-  },
-  {
-    title: "Insurance Services",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
-    description: "Claims Adjusters, Underwriters, Insurance Sales Representatives, Risk Analysts, Policy Administrators"
-  },
-  {
-    title: "Travel & Hospitality",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
-    description: "Hotel Management, Travel Coordinators, Customer Service Representatives, Event Planners, Tourism Specialists"
-  },
-  {
-    title: "Automotive Industry",
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop",
-    description: "Automotive Engineers, Service Technicians, Sales Professionals, Quality Control Specialists, Supply Chain Managers"
-  },
-  {
-    title: "Media & Publishing",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-    description: "Content Creators, Digital Marketing Specialists, Publishing Professionals, Graphic Designers, Media Production Specialists"
-  },
-  {
-    title: "Government & Public Sector",
-    image: "https://images.unsplash.com/photo-1581089778245-3ce67677f718?w=800&h=600&fit=crop",
-    description: "Public Administrators, Policy Analysts, IT Specialists, Program Managers, Compliance Officers"
+    image: "https://images.unsplash.com/photo-1581092688469-808600d8b76c?w=800&h=600&fit=crop", // Specific image for manufacturing/engineering
+    description: "Quality Assurance, Technical Documentation, Operations Management"
   }
 ];
 
@@ -144,10 +110,11 @@ const IndustrySlider = () => {
 
   const getVisibleSlides = () => {
     if (windowWidth === 0) return [];
-    
+
     const slides = [];
+    // Adjust to show 1 visible and 1 partial on each side for mobile, and 2 partials for desktop
     const slideRange = windowWidth < 768 ? 1 : 2;
-    
+
     for (let i = -slideRange; i <= slideRange; i++) {
       const index = (currentSlide + i + industries.length) % industries.length;
       slides.push({ ...industries[index], position: i, index });
@@ -158,25 +125,32 @@ const IndustrySlider = () => {
   const visibleSlides = getVisibleSlides();
 
   return (
-    <div 
-      className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center"
-      style={{ height: containerHeight }}
-    >
-      <div className="w-full max-w-7xl mx-auto px-4">
-        {/* Compact Header */}
-        <div className="text-center mb-4 md:mb-6">
-          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-3">
-            Specialized Recruitment Across 15+ Industries
+    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-8 md:py-12 px-4 flex items-center">
+      <div className="max-w-auto mx-auto w-full">
+        <div className="text-center mb-6 md:mb-8">
+          {/* UPDATED HEADLINE */}
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
+            Industries We Cater To
           </h2>
-          <div className="w-12 md:w-16 h-1 bg-blue-400 mx-auto mb-2 md:mb-4"></div>
-          <p className="text-xs md:text-base text-blue-100 max-w-2xl mx-auto leading-relaxed mb-2">
-            Deep Sector Knowledge | Tailored Solutions for Every Industry
+          <div className="w-16 md:w-20 h-1 bg-blue-400 mx-auto mb-3 md:mb-6"></div>
+          {/* UPDATED SUB-HEADLINE (first paragraph) */}
+          <p className="text-sm md:text-lg text-blue-100 max-w-auto mx-auto leading-relaxed mb-3 px-4">
+            Expertise Across Diverse Verticals | Supporting Organizations in Every Sector
           </p>
+          <div className="hidden md:block">
+            {/* The second heading/paragraph remains as it was, you can update this if you like */}
+            <h3 className="text-lg md:text-xl font-semibold text-white mb-3 px-4">
+              World Class Business Outsourcing Services to Clients Globally from Different Industry
+            </h3>
+            <p className="text-sm md:text-base text-blue-100 max-w-auto mx-auto leading-relaxed px-4">
+              We are a global outsourcing service provider to startups, mid-size, and fortune 500 companies. As a trusted BPO in India, we provide result-oriented services to businesses of any size, any industry, and any geographical region.
+            </p>
+          </div>
         </div>
 
-        {/* Compact Carousel Slider */}
-        <div 
-          className="relative h-[200px] md:h-[280px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+        {/* Carousel Slider */}
+        <div
+          className="relative h-[280px] md:h-[380px] flex items-center justify-center cursor-grab active:cursor-grabbing"
           onMouseDown={(e) => handleStart(e.clientX)}
           onMouseMove={(e) => handleMove(e.clientX)}
           onMouseUp={handleEnd}
@@ -192,12 +166,12 @@ const IndustrySlider = () => {
               const isRight1 = industry.position === 1;
               const isLeft2 = industry.position === -2;
               const isRight2 = industry.position === 2;
-              
+
               const isMobile = windowWidth < 768;
-              
-              // Adjusted baseTranslate for compact layout
-              const baseTranslate = isMobile ? 70 : 150;
-              
+
+              // Corrected baseTranslate values for better mobile fit
+              const baseTranslate = isMobile ? 80 : 180;
+
               let translateX = 0;
               let scale = 0.6;
               let opacity = 0;
@@ -235,7 +209,7 @@ const IndustrySlider = () => {
                 zIndex = 10;
                 blur = 3;
               }
-              
+
               return (
                 <div
                   key={industry.index}

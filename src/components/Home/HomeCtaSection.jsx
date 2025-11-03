@@ -7,12 +7,12 @@ import { useInView } from 'react-intersection-observer';
 const NovotionCta = () => {
   const textControls = useAnimation();
   const imageControls = useAnimation();
-  
+
   const [textRef, textInView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
-  
+
   const [imageRef, imageInView] = useInView({
     triggerOnce: true,
     threshold: 0.3,
@@ -82,10 +82,10 @@ const NovotionCta = () => {
           style={{ animationDelay: "1.5s" }}
         ></div>
       </div>
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="flex flex-col lg:flex-row-reverse items-center gap-6 lg:gap-8 xl:gap-12">
-          
+
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col lg:flex-row-reverse items-center space-y-8 lg:space-y-0 lg:space-x-12 lg:space-x-reverse">
+
           {/* Right Column: Text Content and Buttons */}
           <motion.div
             ref={textRef}
@@ -108,29 +108,23 @@ const NovotionCta = () => {
               className="h-1 w-16 md:w-20 bg-gradient-to-r from-blue-800 to-black rounded-full mx-auto lg:mx-0 mb-4 md:mb-5"
             ></motion.div>
 
+            {/* UPDATED PARAGRAPH CONTENT */}
             <motion.p 
               variants={itemVariants}
               className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 md:mb-5 line-clamp-4"
             >
-              Whether you represent an organization in the UK or USA seeking to optimize hiring operations, scale recruitment capacity, or access specialized talent pools—or you're an IT professional in the USA market pursuing your next contract opportunity, seeking project placements, or looking for expert support in marketing your technical skills.
+              Access world-class BPO solutions designed to optimize operations, reduce costs, and drive sustainable growth. From strategic recruitment to comprehensive back-office services, Novotion is your trusted partner in building exceptional teams and streamlining operations across global markets. Let's unlock your organization's full potential.
             </motion.p>
 
-            <motion.p 
-              variants={itemVariants}
-              className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 md:mb-7 line-clamp-3"
-            >
-              Novotion is positioned to support your objectives with proven methodologies, dedicated expertise, and genuine commitment to your success. Our teams across the UK, USA, and India are ready to begin conversations about your specific needs, challenges, and goals.
-            </motion.p>
-            
-            {/* CTA Buttons */}
+            {/* CTA Buttons (Labels are correct) */}
             <motion.div 
               variants={itemVariants}
               className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-3 sm:gap-4"
             >
-              {/* Primary Button - For Organizations */}
-              <button className="w-full sm:w-auto group relative px-5 md:px-6 py-2.5 md:py-3 bg-blue-800 text-white font-semibold rounded-lg text-sm md:text-base shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
-                <span className="relative z-10 transition-opacity duration-500 group-hover:opacity-0 text-xs md:text-sm">
-                  For Organizations: Discuss RPO Solutions
+              {/* Primary Button (Book a Demo) */}
+              <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 md:py-4 bg-blue-800 text-white font-semibold rounded-lg text-base md:text-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                <span className="relative z-10 transition-opacity duration-500 group-hover:opacity-0">
+                  Book a Demo
                 </span>
                 <div className="absolute inset-0 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-xs md:text-sm">
@@ -138,8 +132,8 @@ const NovotionCta = () => {
                 </span>
               </button>
 
-              {/* Secondary Button - For IT Professionals */}
-              <button className="w-full sm:w-auto group relative px-5 md:px-6 py-2.5 md:py-3 bg-transparent border-2 border-blue-800 text-blue-800 font-semibold rounded-lg text-sm md:text-base overflow-hidden transform transition-all duration-300 hover:scale-105">
+              {/* Secondary Button (Contact Us) */}
+              <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-blue-800 text-blue-800 font-semibold rounded-lg text-base md:text-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
                 <div className="absolute inset-0 bg-blue-800 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
                 <span className="relative z-10 transition-colors duration-300 text-xs md:text-sm">
                   For IT Professionals: Explore Career Support
@@ -150,7 +144,7 @@ const NovotionCta = () => {
               </button>
             </motion.div>
           </motion.div>
-          
+
           {/* Left Column: Illustration */}
           <motion.div
             ref={imageRef}
@@ -165,7 +159,7 @@ const NovotionCta = () => {
               className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
             />
           </motion.div>
-          
+
         </div>
       </div>
     </div>

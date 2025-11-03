@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image'; // Assuming you have Next.js Image component
+// import Image from 'next/image'; // Removing Next.js Image component as it's not runnable here
 
 const GlobalTalentGateway = () => {
   const sectionRef = useRef(null);
@@ -38,6 +38,7 @@ const GlobalTalentGateway = () => {
       className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative overflow-hidden py-16 md:py-24 lg:py-32 px-4"
     >
       {/* Animated Background Graphics - subtle dots/lines */}
+      {/* NOTE: If you need the gradient-shift animation, ensure the @keyframes are in your global CSS */}
       <div className="absolute inset-0 z-0 opacity-30">
         <div className="animate-gradient-shift w-full h-full" style={{
           background: 'linear-gradient(45deg, #1e3a8a, #0c4a6e, #1e3a8a, #0ea5e9)',
@@ -45,18 +46,12 @@ const GlobalTalentGateway = () => {
           animation: 'gradient-shift 15s ease infinite'
         }}></div>
       </div>
-      {/* Add this to your global CSS:
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      */}
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         {/* Left Column: Content */}
         <div className="relative z-20 md:pr-8 lg:pr-16 text-center md:text-left">
-          {/* Main Title */}
+          
+          {/* Main Title - UPDATED HEADLINE */}
           <h2
             className={`
               text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 leading-tight text-white
@@ -64,34 +59,24 @@ const GlobalTalentGateway = () => {
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
             `}
           >
-            Transform Your <br className="hidden sm:inline" />
-            <span className="text-blue-400">Hiring with Novotion</span>
+            Your Gateway to Access <br className="hidden sm:inline" />
+            <span className="text-blue-400">Global Talent and Expertise</span>
           </h2>
 
-          {/* Mission Statement */}
+          {/* Goal-Focused Paragraph - REPLACED OLD PARAGRAPHS WITH NEW CONTENT */}
           <p
             className={`
-              text-sm md:text-lg text-blue-100 mb-6 md:mb-8 leading-relaxed
+              text-sm md:text-lg text-blue-100 mb-8 md:mb-10 leading-relaxed
               transition-all duration-1000 ease-out delay-200
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
             `}
           >
-            Access world-class RPO solutions designed to optimize talent acquisition, reduce hiring costs, and drive sustainable growth. From strategic recruitment to comprehensive talent management, Novotion is your trusted partner in building exceptional teams and streamlining hiring operations across global markets. Let's unlock your organization's full potential.
+            Whether you're scaling your team, launching a new initiative, or optimizing operations, **Novotion** connects you with vetted, skilled professionals and delivers customized BPO solutions that drive results. We're committed to building long-term partnerships based on trust, transparency, and measurable success. Let's grow together.
           </p>
+          
+          {/* Removed the separate "Goal Statement" paragraph as the new content is comprehensive */}
 
-          {/* Goal Statement */}
-          {/* <p
-            className={`
-              text-sm md:text-lg font-semibold text-blue-200 mb-8 md:mb-10
-              transition-all duration-1000 ease-out delay-400
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-            `}
-          >
-            Our ultimate goal is to enable our clients to achieve their business objectives through the power of their people.
-          </p> */}
-
-          {/* Call to Action Button */}
-      
+          {/* Call to Action Button - Text is already "Request Services" */}
           <button
             className={`
               bg-blue-400 text-white px-8 py-3 md:px-10 md:py-4 rounded-full text-lg md:text-xl font-bold
@@ -106,7 +91,7 @@ const GlobalTalentGateway = () => {
           
         </div>
 
-        {/* Right Column: Image - Overlapping on Desktop */}
+        {/* Right Column: Image - Using standard img tag with placeholder */}
         <div
           className={`
             relative flex justify-center items-center h-72 md:h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px]
@@ -115,12 +100,10 @@ const GlobalTalentGateway = () => {
             transition-all duration-1000 ease-out delay-500
           `}
         >
-          <Image
-            src="/image/Gemini_Generated_Image_mi39a7mi39a7mi39.png" // Demo image URL
+          <img
+            src="https://placehold.co/800x600/1e3a8a/ffffff?text=Global+Talent+Solutions"
             alt="Global Talent Gateway"
-            layout="fill" // Makes the image fill its parent div
-            objectFit="cover" // Covers the area without distortion
-            className="rounded-xl shadow-2xl saturate-150 brightness-90 hover:brightness-100 hover:saturate-100 transition-all duration-500"
+            className="w-full h-full object-cover absolute rounded-xl shadow-2xl saturate-150 brightness-90 hover:brightness-100 hover:saturate-100 transition-all duration-500"
           />
           {/* Optional overlay for styling */}
           <div className="absolute inset-0 rounded-xl bg-blue-900/20 mix-blend-multiply"></div>
