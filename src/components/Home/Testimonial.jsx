@@ -13,37 +13,72 @@ const TestimonialSlider = () => {
     {
       name: "Phani Datta Pabisetty",
       role: "QA Analyst, Ampup",
-      testimonial: "Novotion's resume and interview preparation services gave me the edge I needed. Their technical trainer helped me refine my QA testing approach, and within weeks, I received an offer from Ampup.",
+      testimonial: "Novotion's help was a game-changer. Their trainer didn't just prep me; they refined my entire approach to QA testing. I had an offer from Ampup within weeks. What really stood out was the post-placement support—they actually checked in and guided me after I started.",
       bgImage: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       thumbImage: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "Abhinav Dasari",
       role: "Electrical Engineer, UPS",
-      testimonial: "The Novotion team rebuilt my resume and provided focused interview coaching. Their career consultant helped me clearly position my electrical engineering skills for global roles.",
+      testimonial: "The Novotion team didn't just rebuild my resume; they helped me see how to position my electrical engineering skills for the roles I really wanted. The interview coaching was focused and practical. I'm now at UPS, and I know their guidance was what made the difference.",
       bgImage: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       thumbImage: "https://images.unsplash.com/photo-1581094794325-bf55348dfa8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "Anvith Goud Durki",
       role: "Network Engineer, Sarasota County Government",
-      testimonial: "I was struggling to get noticed despite solid technical skills. Novotion optimized my LinkedIn profile and provided customized interview sessions.",
+      testimonial: "I had strong technical skills but was struggling to even get noticed. Novotion's team got to work, optimized my LinkedIn profile, and ran customized interview sessions that built my confidence. I secured my role with Sarasota County Government shortly after. Their personal attention is what sets them apart.",
       bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       thumbImage: "https://images.unsplash.com/photo-1560415751-3e3c75a350d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "Dixit Gupta Garlapati",
       role: "DevOps Engineer, Meta",
-      testimonial: "Novotion connected me to great opportunities and provided deep technical training on CI/CD and cloud concepts. Their trainers are industry experts.",
+      testimonial: "Novotion has real industry experts. They connected me with a trainer who understood exactly what companies like Meta look for in a DevOps Engineer. We dove deep into CI/CD and cloud concepts, which was critical in my interviews. I owe a huge part of my success to their team.",
       bgImage: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       thumbImage: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "Shajahan Shaik",
       role: "Full Stack Developer, Amazon Audible",
-      testimonial: "From resume optimization to advanced interview rounds, Novotion supported me throughout. My consultant and trainer worked tirelessly to improve my coding skills.",
+      testimonial: "From the first resume edit to the final, advanced interview rounds, Novotion was with me. My consultant and trainer were relentless, working with me to sharpen my coding and problem-solving skills. The result? I landed my dream job as a Full Stack Developer at Amazon Audible.",
       bgImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       thumbImage: "https://images.unsplash.com/photo-1551135049-8a33b42738b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Nitesh Battu",
+      role: "Electrical Engineer, Honeywell",
+      testimonial: "I was stuck in a cycle of rejections before I found Novotion. They were honest about what needed to change. They refined my resume and put me through targeted technical mock interviews that felt like the real thing. It gave me the confidence I was missing. Now, I'm part of the engineering team at Honeywell.",
+      bgImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      thumbImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Nikhitha Anugu",
+      role: "Design Engineer, TekWissen",
+      testimonial: "The team at Novotion genuinely treated me like family. My consultant guided me through every single step, from finding the right openings to helping me prepare for salary negotiation. The mock interviews were so realistic and incredibly effective. I'm now a Design Engineer at TekWissen!",
+      bgImage: "https://images.unsplash.com/photo-1581092335397-20ffc55e1c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      thumbImage: "https://images.unsplash.com/photo-1581092335397-20ffc55e1c6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Pravallika Yarragudi",
+      role: "Sr. DFT Verification Engineer, Lightmatter",
+      testimonial: "Novotion's tailored approach made all the difference. They understood my niche technical field. Their resume and LinkedIn optimization immediately helped me land more interviews. I'm now at Lightmatter in a role that is a perfect fit for my career goals.",
+      bgImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      thumbImage: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Naveen Kumar Mandadi",
+      role: "SOC Analyst, Fivesky",
+      testimonial: "The Novotion team truly understands the cybersecurity domain. They connected me with a personal technical trainer who strengthened my SIEM and SOC fundamentals, moving me from theory to practical application. Within a month, I joined Fivesky. Their support and mentoring are excellent.",
+      bgImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      thumbImage: "https://images.unsplash.com/photo-1560415751-3e3c75a350d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      name: "Nagasai Mirthivada",
+      role: "Network Admin, Sierra Digital Inc",
+      testimonial: "Novotion helped me shape my professional journey. It wasn't just a placement service. From the resume revamp to their continuous follow-ups, they provided genuine career assistance. Their after-placement guidance made sure I was well-prepared for my role at Sierra Digital Inc.",
+      bgImage: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      thumbImage: "https://images.unsplash.com/photo-1581094794325-bf55348dfa8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     }
   ];
 

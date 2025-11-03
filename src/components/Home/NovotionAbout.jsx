@@ -5,10 +5,10 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 const sliderImages = [
-  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2940&auto=format&fit=crop",
   "https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2940&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1504384764586-bb4be8f53b5d?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2940&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2940&auto=format&fit=crop",
 ];
 
 const NovotionAbout = () => {
@@ -41,7 +41,7 @@ const NovotionAbout = () => {
     }
   }, [imageControls, imageInView]);
 
-  // Auto-slide effect
+  // Auto-slide
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isDragging) {
@@ -111,36 +111,35 @@ const NovotionAbout = () => {
   };
 
   return (
-    <div className="light-section text-black relative w-full py-12 md:py-20 lg:py-28 bg-white text-gray-900 overflow-hidden">
-      {/* Background patterns */}
+    <div className="light-section text-black relative w-full min-h-screen flex items-center py-8 bg-white text-gray-900 overflow-hidden">
+      {/* Subtle Background Glow */}
       <div className="absolute inset-0 z-0 opacity-5">
-        <div
-          className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-500 rounded-full filter blur-3xl animate-pulse"
-          style={{ animationDelay: "0.5s" }}
-        ></div>
-        <div
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400 rounded-full filter blur-3xl animate-pulse"
-          style={{ animationDelay: "1.5s" }}
-        ></div>
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-500 rounded-full filter blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-400 rounded-full filter blur-3xl animate-pulse"></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12 xl:space-x-16">
-          {/* Left Side: Text Content */}
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10 w-full">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+          
+          {/* LEFT SIDE - TEXT CONTENT (70%) */}
           <motion.div
             ref={textRef}
             initial="hidden"
             animate={textControls}
             variants={textVariants}
-            className="flex-1 max-w-2xl text-center lg:text-left"
+            className="w-full lg:w-7/12 text-center lg:text-left"
           >
-            {/* Heading */}
+            {/* Headline */}
             <motion.h2
               variants={itemVariants}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 md:mb-4 text-gray-900"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4 md:mb-6 text-gray-900"
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-black">
-                A Global Business Process Outsourcing Company
+                Your Strategic RPO Partner Delivering Recruitment Excellence
+              </span>
+              <br />
+              <span className="text-blue-800 text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+                Across UK and USA Markets
               </span>
             </motion.h2>
 
@@ -150,116 +149,138 @@ const NovotionAbout = () => {
               className="h-1 w-16 md:w-20 bg-gradient-to-r from-blue-800 to-black rounded-full mx-auto lg:mx-0 mb-4 md:mb-6"
             ></motion.div>
 
-            {/* Main Description */}
-            <motion.p
+            {/* Paragraph */}
+            <motion.div
               variants={itemVariants}
-              className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 md:mb-8"
+              className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed mb-6 md:mb-8 space-y-3"
             >
-              Novotion is a premier global provider of Business Process
-              Outsourcing (BPO) solutions. With a strong international presence
-              and operational hubs in the USA and India, we deliver exceptional
-              services that drive business success. Novotion adheres to the
-              highest global quality standards, ensuring robust security and
-              superior quality in every aspect of our service delivery. Our
-              commitment to excellence is underscored by our use of
-              industry-leading talent, enabling us to offer innovative and
-              effective solutions that help our clients remain competitive and
-              achieve meaningful results. Partner with Novotion to leverage our
-              expertise and experience unparalleled value in your business
-              processes.
-            </motion.p>
+              <p className="font-semibold text-blue-800">
+                Since 2021, Novotion has been redefining recruitment for organizations and IT professionals across the UK and USA.
+              </p>
+              <p>
+                We specialize in two core areas: Recruitment Process Outsourcing for UK and USA businesses, and Career Support Services & Recruitment Facilitation for IT professionals in the USA.
+              </p>
+              <p>
+                Unlike traditional staffing firms, we go beyond resume matching. We understand business goals, industry challenges, and talent strategies while helping professionals market their skills and secure contract roles in the American IT market.
+              </p>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6 md:mb-8"
+            >
+              <div className="text-center lg:text-left">
+                <div className="text-2xl md:text-3xl font-bold text-blue-800">500+</div>
+                <div className="text-sm text-gray-600">Clients</div>
+              </div>
+              <div className="text-center lg:text-left">
+                <div className="text-2xl md:text-3xl font-bold text-blue-800">10,000+</div>
+                <div className="text-sm text-gray-600">Placements</div>
+              </div>
+              <div className="text-center lg:text-left col-span-2 md:col-span-1">
+                <div className="text-2xl md:text-3xl font-bold text-blue-800">15+</div>
+                <div className="text-sm text-gray-600">Industries</div>
+              </div>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center space-y-3 sm:space-y-0 sm:space-x-4 md:space-x-6"
+              className="flex flex-col sm:flex-row justify-center lg:justify-start items-center space-y-3 sm:space-y-0 sm:space-x-4"
             >
-              {/* About Us Button */}
-              <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 md:py-4 bg-blue-800 text-white font-semibold rounded-lg text-base md:text-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
-                <span className="relative z-10 transition-opacity duration-500 group-hover:opacity-0">
-                  About Us
-                </span>
-                <div className="absolute inset-0 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  About Us →
-                </span>
-              </button>
+              {/* Learn About Our Approach */}
+              <a href="/about-us">
+                <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 bg-blue-800 text-white font-semibold rounded-lg text-sm md:text-base shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
+                  <span className="relative z-10 transition-opacity duration-500 group-hover:opacity-0">
+                    Learn About Our Approach
+                  </span>
+                  <div className="absolute inset-0 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                  <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    Learn About Our Approach →
+                  </span>
+                </button>
+              </a>
 
-              {/* Get Employed Button */}
-              <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 md:py-4 bg-transparent border-2 border-blue-800 text-blue-800 font-semibold rounded-lg text-base md:text-lg overflow-hidden transform transition-all duration-300 hover:scale-105">
-                <div className="absolute inset-0 bg-blue-800 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
-                <span className="relative z-10 transition-colors duration-300">
-                  Get Employed
-                </span>
-                <span className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-                  Get Employed →
-                </span>
-              </button>
+              {/* Explore Services */}
+              <a href="/services">
+                <button className="w-full sm:w-auto group relative px-6 md:px-8 py-3 bg-transparent border-2 border-blue-800 text-blue-800 font-semibold rounded-lg text-sm md:text-base overflow-hidden transform transition-all duration-300 hover:scale-105">
+                  <div className="absolute inset-0 bg-blue-800 transform scale-x-0 origin-left transition-transform duration-500 group-hover:scale-x-100"></div>
+                  <span className="relative z-10 transition-colors duration-300">
+                    Explore Services
+                  </span>
+                  <span className="absolute inset-0 z-10 flex items-center justify-center text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                    Explore Services →
+                  </span>
+                </button>
+              </a>
             </motion.div>
           </motion.div>
 
-          {/* Right Side: Interactive Image Slider */}
+          {/* RIGHT SIDE - IMAGE SLIDER (30%) */}
           <motion.div
             ref={imageRef}
             initial="hidden"
             animate={imageControls}
             variants={imageVariants}
-            className="relative flex-1 w-full max-w-lg lg:max-w-none"
+            className="w-full lg:w-5/12 flex justify-center"
           >
-            <div
-              ref={sliderContainerRef}
-              className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[450px] xl:h-[500px] rounded-xl shadow-2xl overflow-hidden"
-              style={{ touchAction: "pan-y" }}
-            >
-              <motion.div
-                className="flex cursor-grab active:cursor-grabbing h-full"
-                drag="x"
-                dragConstraints={{
-                  left:
-                    -sliderImages.length *
-                      (sliderContainerRef.current?.offsetWidth || 0) +
-                    (sliderContainerRef.current?.offsetWidth || 0),
-                  right: 0,
-                }}
-                onDragStart={handleDragStart}
-                onDragEnd={handleDragEnd}
-                animate={{
-                  x:
-                    -currentImageIndex *
-                    (sliderContainerRef.current?.offsetWidth || 0),
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            <div className="w-full max-w-md">
+              <div
+                ref={sliderContainerRef}
+                className="relative w-full h-64 sm:h-72 md:h-80 rounded-xl shadow-2xl overflow-hidden"
+                style={{ touchAction: "pan-y" }}
               >
-                {sliderImages.map((src, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 w-full h-full relative"
-                  >
-                    <img
-                      src={src}
-                      alt={`Novotion team image ${index + 1}`}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/30"></div>
-                  </div>
-                ))}
-              </motion.div>
-            </div>
+                <motion.div
+                  className="flex cursor-grab active:cursor-grabbing h-full"
+                  drag="x"
+                  dragConstraints={{
+                    left:
+                      -sliderImages.length *
+                        (sliderContainerRef.current?.offsetWidth || 0) +
+                      (sliderContainerRef.current?.offsetWidth || 0),
+                    right: 0,
+                  }}
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                  animate={{
+                    x:
+                      -currentImageIndex *
+                      (sliderContainerRef.current?.offsetWidth || 0),
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                >
+                  {sliderImages.map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex-shrink-0 w-full h-full relative"
+                    >
+                      <img
+                        src={src}
+                        alt={`Novotion global team ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/20"></div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
 
-            {/* Pagination Dots */}
-            <div className="flex justify-center mt-4 md:mt-6 space-x-2">
-              {sliderImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                    index === currentImageIndex
-                      ? "bg-blue-800 w-5 md:w-6"
-                      : "bg-gray-400"
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
+              {/* Pagination Dots */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {sliderImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? "bg-blue-800 w-4"
+                        : "bg-gray-400"
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </motion.div>
         </div>

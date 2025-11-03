@@ -4,18 +4,18 @@ import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-// Company logos - Replace these URLs with actual company logos
+// Company logos - Updated with your specified companies
 const companyLogos = [
+  { name: "Amazon", url: "https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg" },
+  { name: "Meta", url: "https://cdn.worldvectorlogo.com/logos/meta-1.svg" },
   { name: "Google", url: "https://cdn.worldvectorlogo.com/logos/google-icon.svg" },
   { name: "Microsoft", url: "https://cdn.worldvectorlogo.com/logos/microsoft-5.svg" },
-  { name: "Amazon", url: "https://cdn.worldvectorlogo.com/logos/amazon-icon-1.svg" },
-  { name: "Apple", url: "https://cdn.worldvectorlogo.com/logos/apple-14.svg" },
-  { name: "Meta", url: "https://cdn.worldvectorlogo.com/logos/meta-1.svg" },
   { name: "IBM", url: "https://cdn.worldvectorlogo.com/logos/ibm-1.svg" },
   { name: "Oracle", url: "https://cdn.worldvectorlogo.com/logos/oracle-6.svg" },
-  { name: "Salesforce", url: "https://cdn.worldvectorlogo.com/logos/salesforce-2.svg" },
-  { name: "Adobe", url: "https://cdn.worldvectorlogo.com/logos/adobe-1.svg" },
+  { name: "UPS", url: "https://cdn.worldvectorlogo.com/logos/ups-3.svg" },
+  { name: "Honeywell", url: "https://cdn.worldvectorlogo.com/logos/honeywell-2.svg" },
   { name: "Intel", url: "https://cdn.worldvectorlogo.com/logos/intel-2.svg" },
+  { name: "Sarasota County Government", url: "https://cdn.worldvectorlogo.com/logos/government-svgrepo-com.svg" },
 ];
 
 const PlacementSection = () => {
@@ -81,9 +81,17 @@ const PlacementSection = () => {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 md:mb-4 text-gray-900"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-black">
-              Our Candidates Are Placed At
+              Trusted by Leading Organizations Across Multiple Sectors
             </span>
           </motion.h2>
+
+          {/* Sub-Headline */}
+          <motion.p
+            variants={itemVariants}
+            className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed"
+          >
+            Our Professionals and Candidates Thrive at Industry-Leading Companies
+          </motion.p>
 
           {/* Divider */}
           <motion.div
@@ -119,7 +127,7 @@ const PlacementSection = () => {
                 {duplicatedLogos.map((company, index) => (
                   <div
                     key={`${company.name}-${index}`}
-                    className="flex-shrink-0 w-24 h-14 md:w-40 md:h-24 flex items-center justify-center opacity-60 transition-opacity duration-300"
+                    className="flex-shrink-0 w-24 h-14 md:w-40 md:h-24 flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300"
                   >
                     <img
                       src={company.url}
@@ -130,6 +138,16 @@ const PlacementSection = () => {
                 ))}
               </motion.div>
             </div>
+          </motion.div>
+
+          {/* Additional Companies Count */}
+          <motion.div
+            variants={itemVariants}
+            className="mt-6 md:mt-8"
+          >
+            <p className="text-base md:text-lg text-gray-500 font-medium">
+              And 490+ more organizations across UK and USA markets
+            </p>
           </motion.div>
         </motion.div>
       </div>

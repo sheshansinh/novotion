@@ -5,42 +5,42 @@ import { useState, useEffect, useRef } from 'react';
 const carouselData = [
   {
     title: 'Recruitment Process Outsourcing',
-    text: 'Novotion provides a wide range of services to aid organizations with Recruitment Process Outsourcing.',
+    text: 'Streamline hiring, reduce time-to-hire, and access top talent for organizations in UK and USA markets.',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop', 
   },
   {
-    title: 'Career Consultation',
-    text: 'Novotion provides expert guidance on career choices, job search, and skill development to help individuals achieve professional success.',
+    title: 'Career Support Services & Recruitment Facilitation',
+    text: 'Connecting IT professionals with contract-based technology opportunities in the USA market.',
     image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop',
   },
   {
-    title: 'Resume Crafting',
-    text: 'Creating a polished, tailored resume that highlights skills, experience, and achievements to improve job prospects.',
+    title: 'Talent Acquisition Strategy',
+    text: 'Comprehensive workforce planning and talent pipeline development for sustainable growth.',
     image: 'https://images.unsplash.com/photo-1698047681432-006d2449c631?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    title: 'Resume Understanding',
-    text: 'Analyzing a resume to interpret its strengths, weaknesses, and alignment with job requirements.',
+    title: 'IT Professional Placement',
+    text: 'Specialized recruitment for technology roles with focus on contract-based opportunities.',
     image: 'https://images.unsplash.com/photo-1554224155-cfa08c2a758f?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    title: 'Marketing of Profile',
-    text: 'Strategically presenting skills and experience to enhance visibility and attract job opportunities.',
+    title: 'Market Analysis & Insights',
+    text: 'Data-driven insights on talent availability, compensation trends, and market dynamics.',
     image: 'https://images.unsplash.com/photo-1621184078806-6fa2fc6b1c7e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
   {
-    title: 'On Job Support',
-    text: 'Guidance and assistance to employees in handling workplace challenges and improving performance.',
+    title: 'Candidate Development',
+    text: 'Skill enhancement and career coaching to prepare professionals for market opportunities.',
     image: 'https://images.unsplash.com/photo-1729824186568-be656d0eecf9?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fE9uJTIwSm9iJTIwU3VwcG9ydHxlbnwwfHwwfHx8MA%3D%3D',
   },
   {
-    title: 'Interview Support & Preparations',
-    text: 'We help candidates build confidence, refine answers, and develop strategies to succeed in job interviews.',
+    title: 'Interview & Selection Process',
+    text: 'Structured assessment methods to ensure precise candidate-organization matching.',
     image: 'https://images.unsplash.com/photo-1698047681452-08eba22d0c64?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SW50ZXJ2aWV3JTIwU3VwcG9ydCUyMCUyNiUyMFByZXBhcmF0aW9uc3xlbnwwfHwwfHx8MA%3D%3D',
   },
   {
-    title: 'Interview Consultation',
-    text: 'We offer expert advice and strategies to improve interview performance and increase job success chances.',
+    title: 'Long-term Partnership Support',
+    text: 'Ongoing relationship management and performance tracking for continued success.',
     image: 'https://images.unsplash.com/photo-1551135049-8a33b5883817?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SW50ZXJ2aWV3JTIwQ29uc3VsdGF0aW9ufGVufDB8fDB8fHww',
   },
 ];
@@ -143,46 +143,75 @@ const CarouselSection = () => {
     <>
       <div className="flex flex-col lg:flex-row min-h-screen overflow-hidden font-sans text-white bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         
-        {/* Left Content Section */}
-        <div className="flex-1 flex flex-col justify-center items-center p-6 sm:p-8 lg:p-16 text-center lg:text-left order-2 lg:order-1">
-          <div className="max-w-xl w-full">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight mb-4 sm:mb-6 text-white">
-              Targeted Placements, <br className="hidden sm:inline" />
-              Exceptional Results
+        {/* Left Content Section - More Space */}
+        <div className="flex-1 flex flex-col justify-center p-6 sm:p-8 lg:p-12 text-center lg:text-left order-2 lg:order-1">
+          <div className="max-w-2xl w-full mx-auto lg:mx-0">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-white">
+              Two Distinct Service Lines,
+              <span className="block text-blue-300 mt-2">One Unified Mission</span>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-blue-200 opacity-90 mb-6 sm:mb-8 leading-relaxed">
-              Our team is our greatest asset. Comprising seasoned recruiters, industry experts, and
-              dedicated professionals, we bring a wealth of experience and expertise to every client engagement.
-              With a deep understanding of the recruitment landscape and a commitment to delivering results, our
-              team is poised to help you achieve your hiring objectives efficiently and effectively.
-            </p>
+            
+            <div className="space-y-4 mb-8">
+              <p className="text-blue-100 text-lg leading-relaxed">
+                At Novotion, we operate through two specialized divisions tailored to distinct talent needs.
+              </p>
+              <p className="text-blue-100 text-lg leading-relaxed">
+                Our <span className="text-white font-semibold">Recruitment Process Outsourcing</span> division supports organizations in the UK and USA in streamlining hiring, reducing time-to-hire, and accessing top talent.
+              </p>
+              <p className="text-blue-100 text-lg leading-relaxed">
+                Meanwhile, our <span className="text-white font-semibold">Career Support Services</span> division connects IT professionals with contract-based technology opportunities in the USA market.
+              </p>
+            </div>
+
+            {/* Key Stats */}
+            <div className="grid grid-cols-3 gap-6 mb-8">
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-blue-300">500+</div>
+                <div className="text-sm text-blue-200">Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-blue-300">10K+</div>
+                <div className="text-sm text-blue-200">Placements</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-blue-300">15+</div>
+                <div className="text-sm text-blue-200">Industries</div>
+              </div>
+            </div>
+            
+            <div className="mb-8">
+              <h3 className="text-xl md:text-2xl font-bold text-blue-300 mb-4">
+                Discover Which Service Fits Your Needs
+              </h3>
+            </div>
+            
             <a 
-              href="#" 
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-blue-400 rounded-lg text-blue-400 font-semibold hover:bg-blue-400 hover:text-white transition-all duration-300 transform hover:scale-105"
+              href="/services" 
+              className="inline-block px-8 py-4 bg-blue-600 rounded-lg text-white font-semibold hover:bg-blue-500 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
-              View More
+              View All Services
             </a>
           </div>
         </div>
 
-        {/* Right Carousel Section */}
-        <div className="flex-1 relative z-10 overflow-hidden flex flex-col justify-center items-center order-1 lg:order-2 py-8 lg:py-0">
-          {/* Carousel Container */}
-          <div className="relative w-full h-[50vh] sm:h-[55vh] lg:h-[70vh] max-w-2xl mx-auto" ref={carouselRef}>
+        {/* Right Carousel Section - Compact */}
+        <div className="flex-1 relative z-10 overflow-hidden flex flex-col justify-center items-center order-1 lg:order-2 py-6 lg:py-0">
+          {/* Carousel Container - Smaller */}
+          <div className="relative w-full h-[40vh] sm:h-[45vh] lg:h-[50vh] max-w-lg mx-auto" ref={carouselRef}>
             {carouselData.map((item, index) => (
               <div
-                className="carousel-item absolute top-1/2 left-1/2 rounded-xl sm:rounded-2xl shadow-2xl bg-black overflow-hidden transition-transform duration-800 ease-[cubic-bezier(0,0.02,0,1)] cursor-pointer"
+                className="carousel-item absolute top-1/2 left-1/2 rounded-xl shadow-2xl bg-black overflow-hidden transition-transform duration-800 ease-[cubic-bezier(0,0.02,0,1)] cursor-pointer"
                 key={index}
                 style={{
                   '--items': carouselData.length,
                   '--active': 0,
-                  '--width': 'clamp(220px, 65vw, 340px)',
-                  '--height': 'clamp(300px, 80vw, 460px)',
+                  '--width': 'clamp(200px, 50vw, 280px)',
+                  '--height': 'clamp(250px, 60vw, 320px)',
                   width: 'var(--width)',
                   height: 'var(--height)',
-                  '--x': 'calc(var(--active) * 800%)',
-                  '--y': 'calc(var(--active) * 200%)',
-                  '--rot': 'calc(var(--active) * 120deg)',
+                  '--x': 'calc(var(--active) * 600%)',
+                  '--y': 'calc(var(--active) * 150%)',
+                  '--rot': 'calc(var(--active) * 100deg)',
                   '--opacity': 'calc(var(--zIndex) / var(--items) * 3 - 2)',
                   transform: 'translate(-50%, -50%) translate(var(--x), var(--y)) rotate(var(--rot))',
                   zIndex: `var(--zIndex)`,
@@ -193,23 +222,23 @@ const CarouselSection = () => {
                   style={{ opacity: 'var(--opacity)' }}
                 >
                   {/* Gradient Overlays */}
-                  <div className="absolute z-20 inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70 lg:to-black/70"></div>
+                  <div className="absolute z-20 inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70"></div>
                   
                   {/* Number Badge - Desktop Only */}
-                  <div className="hidden lg:block absolute z-30 top-3 sm:top-4 left-3 sm:left-5 text-xl sm:text-2xl md:text-3xl font-extrabold text-blue-400 drop-shadow-lg">
+                  <div className="hidden lg:block absolute z-30 top-3 left-3 text-lg font-extrabold text-blue-400 drop-shadow-lg">
                     {`0${index + 1}`}
                   </div>
                   
                   {/* Title & Description - Desktop Only */}
                   <div className="hidden lg:block">
-                    <div className="absolute z-30 bottom-14 sm:bottom-16 left-3 sm:left-5 right-3 sm:right-5">
-                      <h3 className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-tight drop-shadow-lg line-clamp-2">
+                    <div className="absolute z-30 bottom-12 left-3 right-3">
+                      <h3 className="text-white text-sm font-bold leading-tight drop-shadow-lg line-clamp-2">
                         {item.title}
                       </h3>
                     </div>
                     
-                    <div className="absolute z-30 bottom-3 sm:bottom-5 left-3 sm:left-5 right-3 sm:right-5">
-                      <p className="text-blue-100 text-xs sm:text-sm leading-relaxed drop-shadow-md line-clamp-2">
+                    <div className="absolute z-30 bottom-3 left-3 right-3">
+                      <p className="text-blue-100 text-xs leading-relaxed drop-shadow-md line-clamp-2">
                         {item.text}
                       </p>
                     </div>
@@ -228,10 +257,12 @@ const CarouselSection = () => {
           </div>
 
           {/* Mobile Content Below Card */}
-          <div className="lg:hidden w-full max-w-sm mx-auto px-6 mt-6 text-center">
-            <div className="">
-             
-              <h3 className="text-white text-lg sm:text-xl font-bold leading-tight mb-3">
+          <div className="lg:hidden w-full max-w-sm mx-auto px-4 mt-6 text-center">
+            <div className="bg-black/30 rounded-lg p-4 backdrop-blur-sm">
+              <div className="text-blue-300 text-sm font-semibold mb-2">
+                0{active + 1} / 0{carouselData.length}
+              </div>
+              <h3 className="text-white text-lg font-bold leading-tight mb-2">
                 {carouselData[active].title}
               </h3>
               <p className="text-blue-200 text-sm leading-relaxed">

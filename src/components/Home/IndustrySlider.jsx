@@ -5,64 +5,79 @@ import Image from 'next/image';
 
 const industries = [
   {
-    title: "Human Resource",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop",
-    description: "Streamline HR operations with cutting-edge technology solutions and workforce management systems."
-  },
-  {
-    title: "Energy, Oil & Gas",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop",
-    description: "Advanced solutions for energy sector optimization and sustainable resource management."
-  },
-  {
-    title: "Engineering",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
-    description: "Innovative engineering services driving technological advancement and infrastructure development."
-  },
-  {
-    title: "Telecom",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    description: "Next-generation telecommunications solutions for seamless global connectivity."
-  },
-  {
-    title: "Aerospace",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop",
-    description: "Precision engineering and advanced solutions for aerospace industry excellence."
-  },
-  {
-    title: "Financial Services",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    description: "Secure financial solutions and digital transformation for banking and finance sectors."
-  },
-  {
-    title: "Media Communications",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-    description: "Revolutionary media solutions driving content creation and digital broadcasting."
-  },
-  {
-    title: "Automotive",
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop",
-    description: "Transforming automotive industry with smart manufacturing and mobility solutions."
-  },
-  {
-    title: "Electricity & Utility",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
-    description: "Smart grid solutions and utility management for sustainable energy distribution."
-  },
-  {
-    title: "Information & Technology",
+    title: "Technology & Information Technology",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    description: "Cutting-edge IT solutions powering digital transformation across industries."
+    description: "Software Engineers, DevOps Specialists, QA Analysts, Full Stack Developers, Network Engineers, DFT Verification Engineers, Data Scientists, Cybersecurity Professionals"
   },
   {
-    title: "Retail & Manufacturing",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-    description: "End-to-end retail and manufacturing solutions for operational excellence."
-  },
-  {
-    title: "Logistics",
+    title: "Logistics & Supply Chain Management",
     image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop",
-    description: "Intelligent supply chain and logistics solutions for global commerce efficiency."
+    description: "Warehouse Operations Managers, Logistics Coordinators, Supply Chain Analysts, Distribution Specialists, Transportation Managers, Inventory Control Specialists"
+  },
+  {
+    title: "Healthcare & Life Sciences",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    description: "Medical Professionals, Healthcare Administrators, Clinical Research Coordinators, Pharmaceutical Sales Representatives, Medical Billing Specialists, Healthcare IT Professionals"
+  },
+  {
+    title: "Finance & Banking Services",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    description: "Financial Analysts, Investment Advisors, Compliance Officers, Banking Operations Specialists, Risk Management Professionals, Accounting Specialists"
+  },
+  {
+    title: "Human Resources & Talent Acquisition",
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop",
+    description: "HR Business Partners, Recruitment Specialists, Employee Relations Managers, Compensation & Benefits Analysts, HRIS Administrators, Training Coordinators"
+  },
+  {
+    title: "Oil, Gas & Energy",
+    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop",
+    description: "Operations Engineers, Technical Support Specialists, Field Service Engineers, Energy Analysts, Safety Compliance Officers, Project Managers"
+  },
+  {
+    title: "Customer Support & Service Centers",
+    image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=800&h=600&fit=crop",
+    description: "Customer Success Managers, Technical Support Representatives, Call Center Supervisors, Service Quality Analysts, Client Relations Specialists"
+  },
+  {
+    title: "Manufacturing & Engineering",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+    description: "Quality Engineers, Production Managers, Process Engineers, Operations Supervisors, Manufacturing Technicians, Industrial Engineers"
+  },
+  {
+    title: "Telecommunications",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
+    description: "Network Engineers, Telecom Sales Professionals, Technical Support Specialists, Systems Administrators, Wireless Technicians"
+  },
+  {
+    title: "Retail & E-Commerce",
+    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+    description: "Store Managers, E-Commerce Specialists, Merchandising Professionals, Inventory Managers, Customer Experience Specialists"
+  },
+  {
+    title: "Insurance Services",
+    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop",
+    description: "Claims Adjusters, Underwriters, Insurance Sales Representatives, Risk Analysts, Policy Administrators"
+  },
+  {
+    title: "Travel & Hospitality",
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&h=600&fit=crop",
+    description: "Hotel Management, Travel Coordinators, Customer Service Representatives, Event Planners, Tourism Specialists"
+  },
+  {
+    title: "Automotive Industry",
+    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop",
+    description: "Automotive Engineers, Service Technicians, Sales Professionals, Quality Control Specialists, Supply Chain Managers"
+  },
+  {
+    title: "Media & Publishing",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+    description: "Content Creators, Digital Marketing Specialists, Publishing Professionals, Graphic Designers, Media Production Specialists"
+  },
+  {
+    title: "Government & Public Sector",
+    image: "https://images.unsplash.com/photo-1581089778245-3ce67677f718?w=800&h=600&fit=crop",
+    description: "Public Administrators, Policy Analysts, IT Specialists, Program Managers, Compliance Officers"
   }
 ];
 
@@ -72,12 +87,20 @@ const IndustrySlider = () => {
   const [startX, setStartX] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
+  const [containerHeight, setContainerHeight] = useState('90vh');
 
-  // Set initial window width on the client
+  // Set initial window width and adjust height for nav
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      // Adjust height based on screen size and account for large nav
+      if (window.innerHeight < 700) {
+        setContainerHeight('85vh');
+      } else {
+        setContainerHeight('90vh');
+      }
     };
+    
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -135,29 +158,25 @@ const IndustrySlider = () => {
   const visibleSlides = getVisibleSlides();
 
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-8 md:py-12 px-4 flex items-center">
-      <div className="max-w-auto mx-auto w-full">
-        <div className="text-center mb-6 md:mb-8">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
-            Industries We Cater
+    <div 
+      className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center"
+      style={{ height: containerHeight }}
+    >
+      <div className="w-full max-w-7xl mx-auto px-4">
+        {/* Compact Header */}
+        <div className="text-center mb-4 md:mb-6">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-3">
+            Specialized Recruitment Across 15+ Industries
           </h2>
-          <div className="w-16 md:w-20 h-1 bg-blue-400 mx-auto mb-3 md:mb-6"></div>
-          <p className="text-sm md:text-lg text-blue-100 max-w-auto mx-auto leading-relaxed mb-3 px-4">
-            Novotion is working with different industry verticals to help companies in business and technology solutions around the globe with its value added services.
+          <div className="w-12 md:w-16 h-1 bg-blue-400 mx-auto mb-2 md:mb-4"></div>
+          <p className="text-xs md:text-base text-blue-100 max-w-2xl mx-auto leading-relaxed mb-2">
+            Deep Sector Knowledge | Tailored Solutions for Every Industry
           </p>
-          <div className="hidden md:block">
-            <h3 className="text-lg md:text-xl font-semibold text-white mb-3 px-4">
-              World Class Business Outsourcing Services to Clients Globally from Different Industry
-            </h3>
-            <p className="text-sm md:text-base text-blue-100 max-w-auto mx-auto leading-relaxed px-4">
-              We are a global outsourcing service provider to startups, mid-size, and fortune 500 companies. As a trusted BPO in India, we provide result-oriented services to businesses of any size, any industry, and any geographical region.
-            </p>
-          </div>
         </div>
 
-        {/* Carousel Slider */}
+        {/* Compact Carousel Slider */}
         <div 
-          className="relative h-[280px] md:h-[380px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+          className="relative h-[200px] md:h-[280px] flex items-center justify-center cursor-grab active:cursor-grabbing"
           onMouseDown={(e) => handleStart(e.clientX)}
           onMouseMove={(e) => handleMove(e.clientX)}
           onMouseUp={handleEnd}
@@ -176,8 +195,8 @@ const IndustrySlider = () => {
               
               const isMobile = windowWidth < 768;
               
-              // Corrected baseTranslate values for better mobile fit
-              const baseTranslate = isMobile ? 80 : 180;
+              // Adjusted baseTranslate for compact layout
+              const baseTranslate = isMobile ? 70 : 150;
               
               let translateX = 0;
               let scale = 0.6;
@@ -228,7 +247,8 @@ const IndustrySlider = () => {
                     filter: `blur(${blur}px)`,
                   }}
                 >
-                  <div className="group relative w-[220px] md:w-[300px] h-[250px] md:h-[350px] rounded-2xl overflow-hidden shadow-2xl">
+                  {/* Compact Card */}
+                  <div className="group relative w-[180px] md:w-[250px] h-[180px] md:h-[250px] rounded-xl overflow-hidden shadow-xl">
                     <img
                       src={industry.image}
                       alt={industry.title}
@@ -236,18 +256,18 @@ const IndustrySlider = () => {
                       draggable="false"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
-                    <div className="absolute inset-0 flex flex-col justify-end p-4 md:p-6">
-                      <h3 className="text-lg md:text-2xl font-bold text-white mb-2 md:mb-3 transform transition-transform duration-500 group-hover:-translate-y-2">
+                    <div className="absolute inset-0 flex flex-col justify-end p-3 md:p-4">
+                      <h3 className="text-sm md:text-lg font-bold text-white mb-1 md:mb-2 transform transition-transform duration-500 group-hover:-translate-y-1">
                         {industry.title}
                       </h3>
                       <div className="overflow-hidden">
-                        <p className="text-xs md:text-sm text-blue-100 leading-relaxed transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                        <p className="text-xs text-blue-100 leading-relaxed transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 line-clamp-2">
                           {industry.description}
                         </p>
                       </div>
-                      <div className="w-0 h-1 bg-blue-400 mt-2 md:mt-3 group-hover:w-full transition-all duration-700"></div>
+                      <div className="w-0 h-0.5 bg-blue-400 mt-1 md:mt-2 group-hover:w-full transition-all duration-700"></div>
                     </div>
-                    <div className="absolute top-0 right-0 w-12 md:w-16 h-12 md:h-16 bg-blue-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}></div>
+                    <div className="absolute top-0 right-0 w-8 md:w-12 h-8 md:h-12 bg-blue-500 opacity-0 group-hover:opacity-20 transition-opacity duration-500" style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}></div>
                   </div>
                 </div>
               );
@@ -255,25 +275,26 @@ const IndustrySlider = () => {
           </div>
         </div>
 
-        {/* Dot Navigation */}
-        <div className="flex justify-center gap-1 md:gap-2 mt-6 md:mt-8">
+        {/* Compact Dot Navigation */}
+        <div className="flex justify-center gap-1 mt-4 md:mt-6">
           {industries.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentSlide(idx)}
               className={`transition-all duration-300 rounded-full ${
                 idx === currentSlide
-                  ? 'w-6 md:w-8 h-1.5 md:h-2 bg-blue-400'
-                  : 'w-1.5 md:w-2 h-1.5 md:h-2 bg-white/30 hover:bg-white/50'
+                  ? 'w-4 md:w-6 h-1.5 bg-blue-400'
+                  : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/50'
               }`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
 
-        <div className="hidden md:block text-center mt-6">
-          <p className="text-blue-200 text-sm max-w-2xl mx-auto">
-            Founded in 2021, Novotion has served clients across 4 continents and 30+ countries.
+        {/* Compact Footer Text */}
+        <div className="text-center mt-4">
+          <p className="text-blue-200 text-xs md:text-sm max-w-xl mx-auto">
+            Connecting top talent with leading organizations across 15+ specialized industry verticals worldwide.
           </p>
         </div>
       </div>

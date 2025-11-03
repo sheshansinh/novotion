@@ -24,11 +24,14 @@ export const BRAND_COLORS = {
 const NovotionContact = () => {
   const [isVisible, setIsVisible] = useState({});
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    subject: "",
-    comments: "",
+    fullName: "",
+    workEmail: "",
+    phoneNumber: "",
+    companyName: "",
+    inquiryType: "",
+    primaryMarket: "",
+    message: "",
+    agreeToTerms: false,
   });
   const [activeLocation, setActiveLocation] = useState("usa");
   const sectionRefs = useRef({});
@@ -60,64 +63,81 @@ const NovotionContact = () => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({ 
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value 
+    }));
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const res = await fetch(
-      "http://localhost/custom-sites/novotion-backend/api/submit_form.php",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    try {
+      const res = await fetch(
+        "http://localhost/custom-sites/novotion-backend/api/submit_form.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        alert("Form submitted successfully!");
+        setFormData({
+          fullName: "",
+          workEmail: "",
+          phoneNumber: "",
+          companyName: "",
+          inquiryType: "",
+          primaryMarket: "",
+          message: "",
+          agreeToTerms: false,
+        });
+      } else {
+        alert("Something went wrong: " + data.message);
       }
-    );
-
-    const data = await res.json();
-
-    if (data.status === "success") {
-      alert("Form submitted successfully!");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        subject: "",
-        comments: "",
-      });
-    } else {
-      alert("Something went wrong: " + data.message);
+    } catch (err) {
+      console.error(err);
+      alert("Network error. Please try again.");
     }
-  } catch (err) {
-    console.error(err);
-    alert("Network error. Please try again.");
-  }
-};
-
+  };
 
   const locations = [
     {
       id: "usa",
-      name: "USA Office",
-      address: "7345 W Sand Lake RD, STE 210",
-      city: "Office 6695, Orlando, FL 32819",
+      name: "United States",
+      address: "Orlando, FL",
+      phone: "+1 (786) 652-3950",
+      email: "hello@novotion.com",
       icon: "🇺🇸",
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.536168588547!2d-81.47168!3d28.45668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI3JzI0LjEiTiA4McKwMjgnMTguMSJX!5e0!3m2!1sen!2sus!4v1234567890",
     },
     {
       id: "india",
-      name: "India Office",
-      address: "1410, Shapath V, Prahladnagar",
-      city: "Ahmedabad, Gujarat",
+      name: "India (Offshore Support Center)",
+      address: "Ahmedabad, Gujarat",
+      phone: "+91 (XXX) XXX-XXXX",
+      email: "hello@novotion.com",
       icon: "🇮🇳",
       mapUrl:
         "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.9876543!2d72.51234!3d23.01234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAwJzQ0LjQiTiA3MsKwMzAnNDQuNCJF!5e0!3m2!1sen!2sin!4v1234567890",
+    },
+    {
+      id: "uk",
+      name: "United Kingdom (Operations)",
+      address: "London, UK",
+      phone: "+44 (XXX) XXX-XXXX",
+      email: "hello@novotion.com",
+      icon: "🇬🇧",
+      mapUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.182370726!2d-0.10159865000000001!3d51.52864165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2suk!4v1234567890",
     },
   ];
 
@@ -159,8 +179,8 @@ const NovotionContact = () => {
         </svg>
       ),
       title: "Email",
-      value: "info@novotionservices.com",
-      link: "mailto:info@novotionservices.com",
+      value: "hello@novotion.com",
+      link: "mailto:hello@novotion.com",
     },
     {
       icon: (
@@ -213,18 +233,17 @@ const NovotionContact = () => {
           >
             <div className="mb-4">
               <span className="inline-block px-4 py-2 bg-blue-500/20 backdrop-blur-sm border border-blue-400/30 rounded-full text-blue-200 text-sm font-semibold tracking-wider uppercase animate-pulse">
-                Get In Touch
+                Let's Start the Conversation
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
               Contact{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent animate-pulse">
-                Us
+                Novotion
               </span>
             </h1>
-            <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto">
-              Ready to take your business to the next level? Get in touch with
-              us today
+            <p className="text-lg sm:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              Thank you for your interest in Novotion. We are built on strong partnerships, and every great partnership begins with a simple, clear conversation.
             </p>
           </div>
         </div>
@@ -260,10 +279,60 @@ const NovotionContact = () => {
         </div>
       </section>
 
+      {/* Find the Right Path Section */}
+      <section ref={setRef("path")} className="py-12 bg-slate-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-gray-900">
+              Find the Right Path
+            </h2>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              To ensure your inquiry reaches the correct team without delay, please select the option that best describes you:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* For Organizations */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-left">
+                <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 mb-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">For Organizations (RPO Services)</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  Are you looking to optimize your talent acquisition, reduce hiring costs, or scale your team in the UK or USA? Connect with our RPO specialists to discuss your unique business needs.
+                </p>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold text-blue-800">Email: rpo-solutions@novotion.com</p>
+                  <p className="text-xs text-gray-500">Please use our contact form below and select "Organization (RPO)"</p>
+                </div>
+              </div>
+
+              {/* For IT Professionals */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 text-left">
+                <div className="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center text-green-600 mb-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">For IT Professionals (Career Support Services)</h3>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                  Are you a skilled IT professional in the USA market seeking expert marketing, placement support, and your next contract opportunity? Our Career Support team is ready to help you.
+                </p>
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold text-green-800">Email: career-support@novotion.com</p>
+                  <p className="text-xs text-gray-500">Please use our contact form below and select "IT Professional (Career Support)"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Main Contact Section - Compact */}
       <section
         ref={setRef("main")}
-        className="py-12 bg-slate-50 min-h-[80vh] flex items-center"
+        className="py-12 bg-white min-h-[80vh] flex items-center"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
@@ -281,100 +350,140 @@ const NovotionContact = () => {
                     Send Us a <span className="text-blue-800">Message</span>
                   </h2>
                   <p className="text-gray-600 text-sm">
-                    Fill out the form below and we'll get back to you as soon as
-                    possible
+                    For the fastest response, please fill out the form below. This helps us direct your message to the right specialist.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <div>
-                      <label
-                        htmlFor="firstName"
-                        className="block text-xs font-semibold text-gray-700 mb-1"
-                      >
-                        First Name *
-                      </label>
-                      <input
-                        id="firstName"
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
-                        placeholder="John"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="lastName"
-                        className="block text-xs font-semibold text-gray-700 mb-1"
-                      >
-                        Last Name *
-                      </label>
-                      <input
-                        id="lastName"
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
-                        placeholder="Doe"
-                      />
-                    </div>
-                  </div>
-
                   <div>
                     <label
-                      htmlFor="email"
+                      htmlFor="fullName"
                       className="block text-xs font-semibold text-gray-700 mb-1"
                     >
-                      Email *
+                      Full Name *
                     </label>
                     <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
-                      placeholder="john.doe@example.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block text-xs font-semibold text-gray-700 mb-1"
-                    >
-                      Subject *
-                    </label>
-                    <input
-                      id="subject"
+                      id="fullName"
                       type="text"
-                      name="subject"
-                      value={formData.subject}
+                      name="fullName"
+                      value={formData.fullName}
                       onChange={handleInputChange}
                       required
                       className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
-                      placeholder="How can we help you?"
+                      placeholder="Enter your full name"
                     />
                   </div>
 
                   <div>
                     <label
-                      htmlFor="comments"
+                      htmlFor="workEmail"
                       className="block text-xs font-semibold text-gray-700 mb-1"
                     >
-                      Message *
+                      Work Email *
+                    </label>
+                    <input
+                      id="workEmail"
+                      type="email"
+                      name="workEmail"
+                      value={formData.workEmail}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
+                      placeholder="your.email@company.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phoneNumber"
+                      className="block text-xs font-semibold text-gray-700 mb-1"
+                    >
+                      Phone Number
+                    </label>
+                    <input
+                      id="phoneNumber"
+                      type="tel"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="companyName"
+                      className="block text-xs font-semibold text-gray-700 mb-1"
+                    >
+                      Company Name (if applicable)
+                    </label>
+                    <input
+                      id="companyName"
+                      type="text"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
+                      placeholder="Your company name"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="inquiryType"
+                      className="block text-xs font-semibold text-gray-700 mb-1"
+                    >
+                      I am... (Required) *
+                    </label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      value={formData.inquiryType}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
+                    >
+                      <option value="">Select an option</option>
+                      <option value="organization">An Organization seeking RPO services</option>
+                      <option value="it-professional">An IT Professional seeking career support</option>
+                      <option value="partner">A potential partner</option>
+                      <option value="other">Other (General Inquiry)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="primaryMarket"
+                      className="block text-xs font-semibold text-gray-700 mb-1"
+                    >
+                      Your Primary Market
+                    </label>
+                    <select
+                      id="primaryMarket"
+                      name="primaryMarket"
+                      value={formData.primaryMarket}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-100 transition-all duration-200 outline-none text-sm"
+                    >
+                      <option value="">Select your market</option>
+                      <option value="usa">United States</option>
+                      <option value="uk">United Kingdom</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-semibold text-gray-700 mb-1"
+                    >
+                      How can we help you? (Required) *
                     </label>
                     <textarea
-                      id="comments"
-                      name="comments"
-                      value={formData.comments}
+                      id="message"
+                      name="message"
+                      value={formData.message}
                       onChange={handleInputChange}
                       required
                       rows="4"
@@ -383,12 +492,27 @@ const NovotionContact = () => {
                     ></textarea>
                   </div>
 
+                  <div className="flex items-start gap-3">
+                    <input
+                      id="agreeToTerms"
+                      name="agreeToTerms"
+                      type="checkbox"
+                      checked={formData.agreeToTerms}
+                      onChange={handleInputChange}
+                      required
+                      className="mt-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                    />
+                    <label htmlFor="agreeToTerms" className="text-xs text-gray-600">
+                      I have read and agree to the Novotion Privacy Policy and Terms of Service.
+                    </label>
+                  </div>
+
                   <button
                     type="submit"
                     className="group relative w-full px-6 py-3 bg-blue-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-sm"
                   >
                     <span className="relative z-10 flex items-center justify-center gap-2">
-                      Send Message
+                      Submit Message
                       <svg
                         className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
                         fill="none"
@@ -417,34 +541,17 @@ const NovotionContact = () => {
               }`}
             >
               <div className="space-y-6">
-                {/* Why Choose Us Card */}
+                {/* Introduction Card */}
                 <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-xl">
                   <h3 className="text-xl font-bold mb-4 text-gray-900">
-                    Why Choose <span className="text-blue-800">Novotion?</span>
+                    Connect With Us <span className="text-blue-800">Directly</span>
                   </h3>
                   <p className="text-gray-600 leading-relaxed mb-4 text-sm">
-                    Ready to take your recruitment strategy to the next level?
-                    Get in touch with us today.
+                    We are a specialized firm with two distinct missions. Whether you are an organization in the United Kingdom or the United States seeking a world-class RPO partner, or a skilled IT professional in the U.S. market looking to advance your career, our team is ready to listen.
                   </p>
-
-                  <div className="space-y-3">
-                    {[
-                      { icon: "🚀", text: "24/7 Customer Support" },
-                      { icon: "🌍", text: "Global Presence" },
-                      { icon: "💼", text: "Expert Team" },
-                      { icon: "📈", text: "Proven Track Record" },
-                    ].map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-3 text-gray-700"
-                      >
-                        <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-600 text-sm flex-shrink-0">
-                          {item.icon}
-                        </div>
-                        <span className="font-medium text-sm">{item.text}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="text-gray-600 leading-relaxed text-sm">
+                    We are a global company with a local presence. Feel free to reach out to one of our primary operational centers during business hours.
+                  </p>
                 </div>
 
                 {/* Quick Contact - Horizontal */}
@@ -474,7 +581,7 @@ const NovotionContact = () => {
                   </a>
 
                   <a
-                    href="mailto:info@novotionservices.com"
+                    href="mailto:hello@novotion.com"
                     className="group bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center transform hover:-translate-y-1"
                   >
                     <div className="w-8 h-8 bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-600 mb-2 mx-auto group-hover:scale-110 transition-transform duration-300">
@@ -520,7 +627,7 @@ const NovotionContact = () => {
               Our Global <span className="text-blue-400">Offices</span>
             </h2>
             <p className="text-blue-100 text-sm max-w-2xl mx-auto">
-              Visit us at any of our locations worldwide
+              We operate across multiple time zones to provide localized expertise and 24/7 support.
             </p>
           </div>
 
@@ -602,12 +709,13 @@ const NovotionContact = () => {
                       </h3>
                       <div className="space-y-1 text-blue-100 text-xs">
                         <p className="break-words">{location.address}</p>
-                        <p className="break-words">{location.city}</p>
+                        <p className="break-words font-semibold">{location.phone}</p>
+                        <p className="break-words">{location.email}</p>
                       </div>
                       <a
                         href={`https://maps.google.com/?q=${encodeURIComponent(
                           location.address
-                        )},${encodeURIComponent(location.city)}`}
+                        )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-3 px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-xs hover:shadow-xl transform hover:scale-105 transition-all duration-300 inline-flex items-center gap-1"
@@ -650,11 +758,10 @@ const NovotionContact = () => {
             }`}
           >
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-              Ready to Transform Your Business?
+              Ready to Transform Your Talent Strategy?
             </h2>
             <p className="text-blue-100 text-sm mb-6 leading-relaxed">
-              Join over 500 global clients who trust Novotion for their BPO
-              needs.
+              We look forward to learning how we can help you achieve your goals.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-sm">

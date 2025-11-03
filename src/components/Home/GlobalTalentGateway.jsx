@@ -64,8 +64,8 @@ const GlobalTalentGateway = () => {
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
             `}
           >
-            YOUR GATEWAY <br className="hidden sm:inline" />
-            <span className="text-blue-400">To Access Global Talent</span>
+            Transform Your <br className="hidden sm:inline" />
+            <span className="text-blue-400">Hiring with Novotion</span>
           </h2>
 
           {/* Mission Statement */}
@@ -76,11 +76,11 @@ const GlobalTalentGateway = () => {
               ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
             `}
           >
-            To empower organizations around the world to achieve their goals by providing expert support and customized solutions for all aspects of workforce management. We strive to build long-term partnerships based on trust, transparency, and mutual success, and are committed to delivering the highest quality services and solutions to our clients.
+            Access world-class RPO solutions designed to optimize talent acquisition, reduce hiring costs, and drive sustainable growth. From strategic recruitment to comprehensive talent management, Novotion is your trusted partner in building exceptional teams and streamlining hiring operations across global markets. Let's unlock your organization's full potential.
           </p>
 
           {/* Goal Statement */}
-          <p
+          {/* <p
             className={`
               text-sm md:text-lg font-semibold text-blue-200 mb-8 md:mb-10
               transition-all duration-1000 ease-out delay-400
@@ -88,9 +88,10 @@ const GlobalTalentGateway = () => {
             `}
           >
             Our ultimate goal is to enable our clients to achieve their business objectives through the power of their people.
-          </p>
+          </p> */}
 
           {/* Call to Action Button */}
+      
           <button
             className={`
               bg-blue-400 text-white px-8 py-3 md:px-10 md:py-4 rounded-full text-lg md:text-xl font-bold
@@ -100,8 +101,9 @@ const GlobalTalentGateway = () => {
             `}
             style={{ transitionDelay: '600ms' }}
           >
-            Request Services
+            Book a Demo
           </button>
+          
         </div>
 
         {/* Right Column: Image - Overlapping on Desktop */}

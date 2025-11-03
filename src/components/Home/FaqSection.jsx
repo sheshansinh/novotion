@@ -8,7 +8,7 @@ const FaqSection = () => {
   const faqs = [
     {
       question: "What are your pricing options?",
-      answer: "Our pricing depends on the specific service or package you select—whether it’s resume creation, interview training, or full placement assistance. We offer flexible plans to suit freshers, professionals, and executives. A detailed quote is provided after an initial consultation."
+      answer: "Our pricing depends on the specific service or package you select—whether it's resume creation, interview training, or full placement assistance. We offer flexible plans to suit freshers, professionals, and executives. A detailed quote is provided after an initial consultation."
     },
     {
       question: "Is there a guarantee that I will get a job?",
@@ -25,10 +25,6 @@ const FaqSection = () => {
     {
       question: "How do you help after placement?",
       answer: "We provide post-placement support for up to 3 months (extendable). This includes professional mentoring, issue resolution, and progress tracking to ensure you adjust well and succeed in your new position."
-    },
-    {
-      question: "Do you help with H1-B sponsorship?",
-      answer: "While we do not directly provide visa sponsorship, we assist candidates in connecting with partner organizations that offer H1-B sponsorships or similar visa pathways, based on eligibility and availability."
     }
   ];
 

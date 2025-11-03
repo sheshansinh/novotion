@@ -21,10 +21,14 @@ const KeyStatistics = () => {
   }, [controls, inView, hasAnimated]);
 
   const statistics = [
-    { value: 50, suffix: "+", label: "Clients" },
-    { value: 1761, suffix: "+", label: "Placements" },
-    { value: 28, suffix: "", label: "Projects" },
-    { value: 79, suffix: "%", label: "Retention Rate" },
+    { value: 500, suffix: "+", label: "Organizations Served in UK & USA Markets" },
+    { value: 10000, suffix: "+", label: "Professionals Successfully Placed" },
+    { value: 150, suffix: "+", label: "Ongoing Recruitment Projects" },
+    { value: 85, suffix: "%+", label: "Long-Term Placement Success Rate" },
+    { value: 15, suffix: "+", label: "Specialized Industry Verticals" },
+    { value: 4, suffix: "+", label: "Years of Consistent Excellence Since 2021" },
+    { value: 3, suffix: "", label: "Countries: UK & USA Markets + India Support Hub" },
+    { value: 40, suffix: "%", label: "Average Reduction in Client Hiring Time" },
   ];
 
   const containerVariants = {
@@ -78,7 +82,7 @@ const KeyStatistics = () => {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-3 md:mb-4 text-gray-900"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-black">
-              Key Statistics
+              Our Track Record of Success
             </span>
           </motion.h2>
 
@@ -89,7 +93,7 @@ const KeyStatistics = () => {
           ></motion.div>
 
           {/* Statistics Grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-12 max-w-7xl mx-auto">
             {statistics.map((stat, index) => (
               <StatCard
                 key={index}
@@ -143,12 +147,12 @@ const StatCard = ({ value, suffix, label, delay, inView }) => {
       }}
       className="relative group"
     >
-      <div className="bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+      <div className="bg-gradient-to-br from-gray-50 to-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col justify-center">
         {/* Accent line */}
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-800 to-cyan-500 rounded-full"></div>
         
         {/* Number */}
-        <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-2 md:mb-3">
+        <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 md:mb-4">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-800 to-blue-600">
             {count.toLocaleString()}
             {suffix}
@@ -156,7 +160,7 @@ const StatCard = ({ value, suffix, label, delay, inView }) => {
         </div>
         
         {/* Label */}
-        <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600 tracking-wide">
+        <div className="text-sm font-semibold text-gray-600 leading-tight">
           {label}
         </div>
       </div>
