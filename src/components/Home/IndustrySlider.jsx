@@ -3,66 +3,47 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
+// REPLACED WITH YOUR REAL DATA
 const industries = [
   {
-    title: "Human Resource",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop",
-    description: "Streamline HR operations with cutting-edge technology solutions and workforce management systems."
+    title: "Technology & IT",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop", // Reusing IT image
+    description: "DevOps, Full Stack, QA, Network Engineering, DFT Verification"
   },
   {
-    title: "Energy, Oil & Gas",
-    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop",
-    description: "Advanced solutions for energy sector optimization and sustainable resource management."
+    title: "Logistics & Supply Chain",
+    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop", // Reusing Logistics image
+    description: "Warehouse Operations, Logistics Coordination, Network Administration"
   },
   {
-    title: "Engineering",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
-    description: "Innovative engineering services driving technological advancement and infrastructure development."
+    title: "Healthcare & Pharmaceuticals",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba99932?w=800&h=600&fit=crop", // Specific image for healthcare
+    description: "Medical Data Entry, Healthcare Customer Support, Compliance Documentation"
   },
   {
-    title: "Telecom",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop",
-    description: "Next-generation telecommunications solutions for seamless global connectivity."
+    title: "Finance & Banking",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop", // Reusing Financial Services image
+    description: "Data Processing, Compliance Monitoring, Customer Service"
   },
   {
-    title: "Aerospace",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop",
-    description: "Precision engineering and advanced solutions for aerospace industry excellence."
+    title: "Human Resources & Recruitment",
+    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop", // Reusing HR image
+    description: "HR Operations, Talent Acquisition, Employee Administration"
   },
   {
-    title: "Financial Services",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    description: "Secure financial solutions and digital transformation for banking and finance sectors."
+    title: "Oil & Gas",
+    image: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=800&h=600&fit=crop", // Reusing Oil & Gas image
+    description: "Operations Support, Technical Roles, Administrative Services"
   },
   {
-    title: "Media Communications",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
-    description: "Revolutionary media solutions driving content creation and digital broadcasting."
+    title: "Customer Support & Call Centers",
+    image: "https://images.unsplash.com/photo-1520607162513-772a1c4b4d66?w=800&h=600&fit=crop", // Specific image for customer support
+    description: "Inbound/Outbound Services, Technical Support, Customer Success"
   },
   {
-    title: "Automotive",
-    image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&h=600&fit=crop",
-    description: "Transforming automotive industry with smart manufacturing and mobility solutions."
-  },
-  {
-    title: "Electricity & Utility",
-    image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=600&fit=crop",
-    description: "Smart grid solutions and utility management for sustainable energy distribution."
-  },
-  {
-    title: "Information & Technology",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop",
-    description: "Cutting-edge IT solutions powering digital transformation across industries."
-  },
-  {
-    title: "Retail & Manufacturing",
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-    description: "End-to-end retail and manufacturing solutions for operational excellence."
-  },
-  {
-    title: "Logistics",
-    image: "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=800&h=600&fit=crop",
-    description: "Intelligent supply chain and logistics solutions for global commerce efficiency."
+    title: "Manufacturing & Engineering",
+    image: "https://images.unsplash.com/photo-1581092688469-808600d8b76c?w=800&h=600&fit=crop", // Specific image for manufacturing/engineering
+    description: "Quality Assurance, Technical Documentation, Operations Management"
   }
 ];
 
@@ -121,10 +102,11 @@ const IndustrySlider = () => {
 
   const getVisibleSlides = () => {
     if (windowWidth === 0) return [];
-    
+
     const slides = [];
+    // Adjust to show 1 visible and 1 partial on each side for mobile, and 2 partials for desktop
     const slideRange = windowWidth < 768 ? 1 : 2;
-    
+
     for (let i = -slideRange; i <= slideRange; i++) {
       const index = (currentSlide + i + industries.length) % industries.length;
       slides.push({ ...industries[index], position: i, index });
@@ -138,14 +120,17 @@ const IndustrySlider = () => {
     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 py-8 md:py-12 px-4 flex items-center">
       <div className="max-w-auto mx-auto w-full">
         <div className="text-center mb-6 md:mb-8">
+          {/* UPDATED HEADLINE */}
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3 md:mb-4">
-            Industries We Cater
+            Industries We Cater To
           </h2>
           <div className="w-16 md:w-20 h-1 bg-blue-400 mx-auto mb-3 md:mb-6"></div>
+          {/* UPDATED SUB-HEADLINE (first paragraph) */}
           <p className="text-sm md:text-lg text-blue-100 max-w-auto mx-auto leading-relaxed mb-3 px-4">
-            Novotion is working with different industry verticals to help companies in business and technology solutions around the globe with its value added services.
+            Expertise Across Diverse Verticals | Supporting Organizations in Every Sector
           </p>
           <div className="hidden md:block">
+            {/* The second heading/paragraph remains as it was, you can update this if you like */}
             <h3 className="text-lg md:text-xl font-semibold text-white mb-3 px-4">
               World Class Business Outsourcing Services to Clients Globally from Different Industry
             </h3>
@@ -156,7 +141,7 @@ const IndustrySlider = () => {
         </div>
 
         {/* Carousel Slider */}
-        <div 
+        <div
           className="relative h-[280px] md:h-[380px] flex items-center justify-center cursor-grab active:cursor-grabbing"
           onMouseDown={(e) => handleStart(e.clientX)}
           onMouseMove={(e) => handleMove(e.clientX)}
@@ -173,12 +158,12 @@ const IndustrySlider = () => {
               const isRight1 = industry.position === 1;
               const isLeft2 = industry.position === -2;
               const isRight2 = industry.position === 2;
-              
+
               const isMobile = windowWidth < 768;
-              
+
               // Corrected baseTranslate values for better mobile fit
               const baseTranslate = isMobile ? 80 : 180;
-              
+
               let translateX = 0;
               let scale = 0.6;
               let opacity = 0;
@@ -216,7 +201,7 @@ const IndustrySlider = () => {
                 zIndex = 10;
                 blur = 3;
               }
-              
+
               return (
                 <div
                   key={industry.index}
